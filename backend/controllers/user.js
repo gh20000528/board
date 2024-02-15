@@ -1,14 +1,12 @@
-const Card = require("../models/card");
-const User = require("../models/user")
+const { User, Card} = require('../models')
 
 const getUser = async (req, res, next) => {
     try {
-        const user = await User.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: Card
-        })
+        const userID = req.params.id
+        console.log(userID);
+        const user = await User.findByPk(userID, {
+            include: Card, // 確保你已經導入了 models 對象，並包含了 Card 模型
+          });
 
         return res.status(200).json({ user })
     } catch (error) {

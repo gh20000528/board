@@ -7,3 +7,5 @@ const sequelize = new Sequelize('sys', 'root', 'gh890528', {
 sequelize.sync({ force: false });
 
 module.exports =  sequelize
+
+
